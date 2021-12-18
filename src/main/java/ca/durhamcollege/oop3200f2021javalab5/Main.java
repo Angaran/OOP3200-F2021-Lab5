@@ -1,21 +1,100 @@
+//File Name: OOP3200-F2021-JavaLab5
+//Student #1:Angaran Yogeswaran
+//Student #1 ID: 100754161
+//Student #2: Taylor Bazouzi
+//Student #2: 100579090
+//Date: December 18th 2021
+
 package ca.durhamcollege.oop3200f2021javalab5;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+
 public class Main extends Application {
+
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Java Lab 5");
-        stage.setScene(scene);
+
+
+
+
+        //Step 1 Create a control
+        // Creating Controls for the Labels that tell the user what to enter
+        Label MyHeightLabel = new Label("My Height in Inches");
+        Label MyWeightLabel = new Label("My Weight in Pounds");
+
+        // Creating Controls for the Textfields that let the user enter values
+        TextField HeightInput = new TextField();
+        TextField Weightnput = new TextField();
+
+        // Creating Controls for the BMI TextField and Calculate Button
+        TextField BMIDisplay = new TextField();
+        Button calculateButton = new Button("Calculate BMI");
+
+        //// Creating Controls for the Label for BMI Field
+        Label BMILabel = new Label("My BMI");
+
+        class ButtonClickHandler implements EventHandler<ActionEvent>
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+               String Weight =Weightnput.getText();
+               String Height =HeightInput.getText();
+                int weight = Integer.parseInt(String.valueOf(Weight));
+                int height = Integer.parseInt(String.valueOf(Height));
+
+               BMIDisplay.setText(String.valueOf((weight * 703)/Math.pow(height,2)));
+               System.out.println(height);
+               System.out.println(weight);
+                System.out.println((weight * 703)/Math.pow(height,2));
+            }
+        }
+        calculateButton.setOnAction(new ButtonClickHandler());
+
+        GridPane gridPane = new GridPane();
+        gridPane.setMinSize(6,8);
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+        gridPane.setPadding(new Insets(10));
+        gridPane.setStyle("-fx-border-color: black; -fx-font-size: 20; -fx-font-family: Consolas;");
+
+        gridPane.add(MyHeightLabel,0,0);
+        gridPane.add(MyWeightLabel,0,1);
+        gridPane.add(HeightInput,1,0);
+        gridPane.add(Weightnput,1,1);
+        gridPane.add(BMILabel,0,2);
+        gridPane.add(BMIDisplay,1,2);
+        gridPane.add(calculateButton,2,2);
+
+
+
+        Scene primaryscene = new Scene(gridPane);
+
+
+        stage.setScene(primaryscene);
         stage.show();
+
     }
+
+
 
     public static void main(String[] args) {
         launch();
