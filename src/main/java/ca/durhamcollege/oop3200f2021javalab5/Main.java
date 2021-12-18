@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -48,8 +49,19 @@ public class Main extends Application {
         TextField BMIDisplay = new TextField();
         Button calculateButton = new Button("Calculate BMI");
 
+        Label BMIScale = new Label("BMI SCALE");
+        Label Result = new Label("Result");
+        Label Underweight = new Label("UnderWeight");
+        Label Underweight2 = new Label("Less than 18.5");
+        Label Normal = new Label("Normal");
+        Label Normal2 = new Label("Between 18.5 and 24.9");
+        Label Overweight = new Label("OverWeight");
+        Label Overweight2 = new Label("Between 25 and 29.9");
+        Label Obese = new Label("Obese");
+        Label Obese2 = new Label("30 or Greater");
         //// Creating Controls for the Label for BMI Field
         Label BMILabel = new Label("My BMI");
+
 
         class ButtonClickHandler implements EventHandler<ActionEvent>
         {
@@ -69,6 +81,8 @@ public class Main extends Application {
         }
         calculateButton.setOnAction(new ButtonClickHandler());
 
+
+
         GridPane gridPane = new GridPane();
         gridPane.setMinSize(6,8);
         gridPane.setVgap(10);
@@ -84,7 +98,17 @@ public class Main extends Application {
         gridPane.add(BMIDisplay,1,2);
         gridPane.add(calculateButton,2,2);
 
+        gridPane.add(BMIScale,0,3);
+        gridPane.add(Underweight,0,4);
+        gridPane.add(Normal,0,5);
+        gridPane.add(Overweight,0,6);
+        gridPane.add(Obese,0,7);
 
+        gridPane.add(Result,1,3);
+        gridPane.add(Underweight2,1,4);
+        gridPane.add(Normal2,1,5);
+        gridPane.add(Overweight2,1,6);
+        gridPane.add(Obese2,1,7);
 
         Scene primaryscene = new Scene(gridPane);
 
