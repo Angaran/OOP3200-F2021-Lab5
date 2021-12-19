@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="14">
-      <module name="OOP3200-F2021-JavaLab5" target="14" />
+      <module name="OOP3200-F2021-JavaLab5" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

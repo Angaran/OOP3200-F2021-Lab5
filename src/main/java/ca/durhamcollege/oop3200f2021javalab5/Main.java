@@ -4,9 +4,11 @@
 //Student #2: Taylor Bazouzi
 //Student #2: 100579090
 //Date: December 18th 2021
+//Modified: December 18, 2021
 
+// packages
 package ca.durhamcollege.oop3200f2021javalab5;
-//importing necessary files
+// imports
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,22 +21,22 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 
-
 public class Main extends Application {
-
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Java Lab 5");
 
-
-
+        // Variables
+        int CONVERT = 703;
+        double underweight = 18.5;
+        double normal = 24.9;
+        double normal2 = 25.00;
+        double overweight = 29.9;
 
         //Step 1 Create a control
         // Creating Controls for the Labels that tell the user what to enter
@@ -59,6 +61,7 @@ public class Main extends Application {
         Label Overweight2 = new Label("Between 25 and 29.9");
         Label Obese = new Label("Obese");
         Label Obese2 = new Label("30 or Greater");
+
         //// Creating Controls for the Label for BMI Field
         Label BMILabel = new Label("My BMI");
 
@@ -79,7 +82,8 @@ public class Main extends Application {
                 int height = Integer.parseInt(String.valueOf(Height));
                 String BMIString;
                 BMIString = BMIDisplay.getText();
-                int BMI = (int) ((weight * 703)/Math.pow(height,2));
+                double calculateBMI = (weight * CONVERT) / Math.pow(height, 2);
+                double BMI = (double) calculateBMI;
 
                BMIDisplay.setText(String.valueOf(BMI));
                System.out.println(height);
@@ -87,15 +91,15 @@ public class Main extends Application {
                System.out.println((weight * 703)/Math.pow(height,2));
                System.out.println(BMIString);
 
-                if (BMI < 18.5)
+                if (BMI < underweight)
                 {
                     BMIScaleResult.setText("Your BMI is underweight");
                 }
-                else if(BMI >18.5 && BMI <24.9)
+                else if(BMI >= underweight && BMI <= normal)
                 {
                     BMIScaleResult.setText("Your BMI is Normal");
                 }
-                else if (BMI > 25 && BMI < 29.9)
+                else if (BMI >= normal2 && BMI <= overweight)
                 {
                     BMIScaleResult.setText("Your BMI is overweight");
                 }
@@ -146,8 +150,6 @@ public class Main extends Application {
         stage.show();
 
     }
-
-
 
     public static void main(String[] args) {
         launch();
