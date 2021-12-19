@@ -6,7 +6,7 @@
 //Date: December 18th 2021
 
 package ca.durhamcollege.oop3200f2021javalab5;
-
+//importing necessary files
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -62,21 +62,47 @@ public class Main extends Application {
         //// Creating Controls for the Label for BMI Field
         Label BMILabel = new Label("My BMI");
 
+        //Creating Controls to output code
+        Label BMIScaleTitle = new Label("BMI Scale Result");
+        TextField BMIScaleResult = new TextField();
+        BMIScaleResult.setPrefWidth(300);
+
 
         class ButtonClickHandler implements EventHandler<ActionEvent>
         {
             @Override
             public void handle(ActionEvent event)
             {
-               String Weight =Weightnput.getText();
-               String Height =HeightInput.getText();
+                String Weight =Weightnput.getText();
+                String Height =HeightInput.getText();
                 int weight = Integer.parseInt(String.valueOf(Weight));
                 int height = Integer.parseInt(String.valueOf(Height));
+                String BMIString;
+                BMIString = BMIDisplay.getText();
+                int BMI = (int) ((weight * 703)/Math.pow(height,2));
 
-               BMIDisplay.setText(String.valueOf((weight * 703)/Math.pow(height,2)));
+               BMIDisplay.setText(String.valueOf(BMI));
                System.out.println(height);
                System.out.println(weight);
-                System.out.println((weight * 703)/Math.pow(height,2));
+               System.out.println((weight * 703)/Math.pow(height,2));
+               System.out.println(BMIString);
+
+                if (BMI < 18.5)
+                {
+                    BMIScaleResult.setText("Your BMI is underweight");
+                }
+                else if(BMI >18.5 && BMI <24.9)
+                {
+                    BMIScaleResult.setText("Your BMI is Normal");
+                }
+                else if (BMI > 25 && BMI < 29.9)
+                {
+                    BMIScaleResult.setText("Your BMI is overweight");
+                }
+                else
+                {
+                    BMIScaleResult.setText("Your BMI is Obese");
+                }
             }
         }
         calculateButton.setOnAction(new ButtonClickHandler());
@@ -109,6 +135,9 @@ public class Main extends Application {
         gridPane.add(Normal2,1,5);
         gridPane.add(Overweight2,1,6);
         gridPane.add(Obese2,1,7);
+
+        gridPane.add(BMIScaleTitle,2,0);
+        gridPane.add(BMIScaleResult,2,1);
 
         Scene primaryscene = new Scene(gridPane);
 
