@@ -76,10 +76,10 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event)
             {
-                String Weight =Weightnput.getText();
-                String Height =HeightInput.getText();
-                int weight = Integer.parseInt(String.valueOf(Weight));
-                int height = Integer.parseInt(String.valueOf(Height));
+                String Weight = Weightnput.getText();
+                String Height = HeightInput.getText();
+                double weight = Double.parseDouble(String.valueOf(Weight));
+                double height = Double.parseDouble(String.valueOf(Height));
                 String BMIString;
                 BMIString = BMIDisplay.getText();
                 double calculateBMI = (weight * CONVERT) / Math.pow(height, 2);
