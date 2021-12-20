@@ -62,7 +62,7 @@ public class Main extends Application {
         Label Obese = new Label("Obese");
         Label Obese2 = new Label("30 or Greater");
 
-        //// Creating Controls for the Label for BMI Field
+        // Creating Controls for the Label for BMI Field
         Label BMILabel = new Label("My BMI");
 
         //Creating Controls to output code
@@ -88,7 +88,7 @@ public class Main extends Application {
                BMIDisplay.setText(String.valueOf(BMI));
                System.out.println(height);
                System.out.println(weight);
-               System.out.println((weight * 703)/Math.pow(height,2));
+               System.out.println(calculateBMI);
                System.out.println(BMIString);
 
                 if (BMI < underweight)
@@ -110,8 +110,6 @@ public class Main extends Application {
             }
         }
         calculateButton.setOnAction(new ButtonClickHandler());
-
-
 
         GridPane gridPane = new GridPane();
         gridPane.setMinSize(6,8);
@@ -144,7 +142,6 @@ public class Main extends Application {
         gridPane.add(BMIScaleResult,2,1);
 
         Scene primaryscene = new Scene(gridPane);
-
 
         stage.setScene(primaryscene);
         stage.show();
